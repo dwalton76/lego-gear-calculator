@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 from itertools import product
 from pprint import pformat
@@ -61,7 +61,7 @@ def find_gear_train_ratio(gears):
             if gear == 1.0:
                 return None
 
-            # A work gear cannot easily drive a 36 tooth gear, it doesn't line up
+            # A worm gear cannot easily drive a 36 tooth gear, it doesn't line up
             if prev_gear == 1.0 and gear == 36.0:
                 return None
 
@@ -127,7 +127,7 @@ def find_gear_train(x, y):
     #
     # Return as soon as we find a solution because that will be the
     # answer that takes the minimum number # of gears.
-    for number_of_gears in xrange(MIN_GEARS, MAX_GEARS+1, 2):
+    for number_of_gears in range(MIN_GEARS, MAX_GEARS+1, 2):
 
         # itertools.product() allows for gears to repeat which is what we want
         # since most own several copies of a particular gear.
@@ -176,7 +176,7 @@ if __name__ == '__main__':
     # (numberX, numberY) = fraction_to_one(numberX, numberY)
 
     if numberX != args.numberX or numberY != args.numberY:
-        print "NOTE: %d:%d reduces to %s:%s" % (args.numberX, args.numberY, numberX, numberY)
+        print("NOTE: %d:%d reduces to %s:%s" % (args.numberX, args.numberY, numberX, numberY))
 
     first = True
     printed = []
@@ -184,20 +184,20 @@ if __name__ == '__main__':
     for (exact, ratio, gt) in find_gear_train(numberX, numberY):
 
         if first:
-            print "\nRatio: %s:%s" % (ratio[0], ratio[1])
+            print("\nRatio: %s:%s" % (ratio[0], ratio[1]))
             first = False
 
             if exact:
-                print "\nSolutions"
-                print "========="
+                print("\nSolutions")
+                print("=========")
             else:
-                print "Could not find an exact match...best result:\n"
+                print("Could not find an exact match...best result:\n")
 
         # 1:8 8:36 vs 8:36 1:8 have the same end result so only
         # print one of them
         gt_sorted = sorted(gt)
         if gt_sorted not in printed:
             gt_string = gear_train_string(gt)
-            print "Gear Train: %s" % gt_string
+            print("Gear Train: %s" % gt_string)
             printed.append(gt_sorted)
-    print ''
+    print ('')
