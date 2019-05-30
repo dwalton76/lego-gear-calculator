@@ -28,11 +28,12 @@ log = logging.getLogger(__name__)
 results = {}
 total = 0
 
-# dwalton
 # min 2 max 2 produces 49 ratios, 63 gear trains, takes 55ms
 # min 2 max 4 produces 465 ratios, 4032 gear trains, takes 104ms
 # min 2 max 6 produces 1974 ratios, 254079 gear trains, takes 4000ms
-# min 2 max 8 produces keys, takes Xms
+#
+# added the 28 tooth gear that was introduced via SPIKE
+# min 2 max 6 produces 2304 gear ratios, 518480 gear trains, takes 5200ms
 
 # Work through every permutation starting with MIN_GEARS all the way up to
 # MAX_GEARS. We work with gears in pairs so iterate by 2.

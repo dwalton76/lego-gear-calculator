@@ -6,7 +6,7 @@ import argparse
 import logging
 import sys
 
-GEAR_TYPES = (1.0, 8.0, 12.0, 16.0, 20.0, 24.0, 36.0, 40.0, 56.0)
+GEAR_TYPES = (1.0, 8.0, 12.0, 16.0, 20.0, 24.0, 28.0, 36.0, 40.0, 56.0)
 
 MIN_GEARS = 2
 MAX_GEARS = 8
@@ -94,8 +94,7 @@ def gear_train_string(gt):
     result = []
     prev_x = None
 
-    # dwalton - stopped here...make:
-    # "1:24 24:36" print as "1:24:36"
+    # TODO....make "1:24 24:36" print as "1:24:36"
     for (i, x) in enumerate(gt):
         if prev_x is None or x != prev_x or True:
             result.append("%d" % int(x))
